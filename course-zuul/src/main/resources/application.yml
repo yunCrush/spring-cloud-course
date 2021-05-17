@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: course-gateway
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+zuul:
+  prefix: /yun
+  routes:
+    course-list:
+      path: /list/**
+      service-id: course-list
+
+    course-price:
+      path: /price/**
+      service-id: course-price
